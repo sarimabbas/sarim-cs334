@@ -15,9 +15,39 @@ recipient_address = credentials.gmail_address
 
 
 def get_device_ip_address():
-    hostname = socket.gethostname()
-    IPAddr = socket.gethostbyname(hostname)
-    return f"Hostname: {hostname}, IP: {IPAddr}"
+
+    try:
+        if os.name == "nt":
+            # On Windows
+            result = "Running on Windows"
+            hostname = socket.gethostname()
+            result += "\nHostname:  " + hostname
+            host = socket.gethostbyname(hostname)
+            result += "\nHost-IP-Address:" + host
+            return result
+
+        elif os.name == "posix":
+            gw = os.popen("ip -4 route show default").read().split()
+            s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            s.connect((gw[2], 0))
+            ipaddr = s.getsockname()[0]
+            gateway = gw[2]
+            host = socket.gethostname()
+            result = (
+                "OS:\t\tRaspbian\nIP:\t\t"
+                + ipaddr
+                + "\nGateway:\t"
+                + gateway
+                + "\nHost:\t\t"
+                + host
+            )
+            return result
+
+        else:
+            result = os.name + " not supported yet."
+            return result
+    except:
+        return "Could not detect ip address"
 
 
 def send_email(text):
