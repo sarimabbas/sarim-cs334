@@ -117,6 +117,8 @@ In the end I opted for the platformer because it was easier to implement, given 
 
 ### Implementation
 
+![Screenshot](./docs/screen.jpg)
+
 #### Choice of engine
 
 I considered a number of options:
