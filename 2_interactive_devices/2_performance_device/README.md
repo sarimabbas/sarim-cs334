@@ -60,7 +60,7 @@ For all installation methods, this is required.
 
 1. Navigate to `2_interactive_devices/2_performance_device/dist/linux_32`
 2. Run `frt_095_311_pi2.bin --main-pack game.pck`
-3. Use an attached keyboard to plays
+3. Use an attached keyboard to play
 
 > Step 2 cannot be run via SSH, since X11 is required. Use VNC or connect the Raspberry Pi to a monitor instead.
 
