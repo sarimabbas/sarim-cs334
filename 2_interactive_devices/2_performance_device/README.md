@@ -26,7 +26,7 @@ With the limited controls available, I thought about which game formats would wo
 1. An endless runner (like Jetpack Joyride)
 2. A platforming game (like Mario)
 
-![Ideation](./assets/ideation.jpg)
+![Ideation](./docs/ideation.jpg)
 
 Both ideas are not novel, but would let me explore the game engine (below) and are well suited to traditional hardware controls like joysticks. Any meaningful addition of complexity (for e.g. isometric terrain) would be too difficult to code up in Processing, so I had to think of alternate implementations.
 
