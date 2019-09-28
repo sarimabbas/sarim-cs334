@@ -15,6 +15,7 @@
       - [Use ESP32 with hardware controls](#use-esp32-with-hardware-controls)
     - [Other platforms (Windows, macOS)](#other-platforms-windows-macos)
   - [Gameplay guide](#gameplay-guide)
+    - [Video demo](#video-demo)
     - [Keyboard controls](#keyboard-controls)
     - [ESP32 hardware controls](#esp32-hardware-controls)
   - [Development process](#development-process)
@@ -84,6 +85,10 @@ Leave the terminal running in the background and focus on the game window. The g
 ## Gameplay guide
 
 You are in control of a bunny. Hop across the platforms and try to reach the end of the level. Do not fall far or hit spikes.
+
+### Video demo
+
+On YouTube here: <https://www.youtube.com/watch?v=V8MBajHQQWc>
 
 ### Keyboard controls
 
