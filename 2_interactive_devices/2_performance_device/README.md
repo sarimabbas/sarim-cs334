@@ -2,6 +2,28 @@
 
 > Module 2, Task 2
 
+## Table of contents
+
+- [Performance Device](#performance-device)
+  - [Table of contents](#table-of-contents)
+  - [Task details](#task-details)
+  - [Installation](#installation)
+    - [Raspberry Pi](#raspberry-pi)
+      - [Enable OpenGL support](#enable-opengl-support)
+      - [Use the browser](#use-the-browser)
+      - [Use the compiled binary (smoother experience)](#use-the-compiled-binary-smoother-experience)
+      - [Use ESP32 with hardware controls](#use-esp32-with-hardware-controls)
+    - [Other platforms (Windows, macOS)](#other-platforms-windows-macos)
+  - [Gameplay guide](#gameplay-guide)
+    - [Keyboard controls](#keyboard-controls)
+    - [ESP32 hardware controls](#esp32-hardware-controls)
+  - [Development process](#development-process)
+    - [Ideation](#ideation)
+    - [Implementation](#implementation)
+      - [Choice of engine](#choice-of-engine)
+      - [Communication between ESP32 and the game](#communication-between-esp32-and-the-game)
+  - [Attribution](#attribution)
+
 ## Task details
 
 **Objective:**
