@@ -17,7 +17,25 @@ Create a performance device. Performable is broadly interpreted and may include 
   - Joystick
   - SPST switch
 
-## Ideation
+## Installation
+
+### Raspberry Pi
+
+1. Enable OpenGL driver support
+   - Run `sudo raspi-config`
+   - Advanced Settings > GL Driver > GL driver (Full KMS)
+2. `git clone` this repository to your computer
+3. Navigate to `2_interactive_devices/2_performance_device/dist/linux_32`
+4. Run `frt_095_311_pi2.bin --main-pack game.pck`
+5. Use an attached keyboard to play
+
+### macOS
+
+
+
+## Development process
+
+### Ideation
 
 I wanted to create a video game console. As a single person team, I wanted to create a game that would be of moderate complexity to create and that would run smoothly on the Pi.
 
@@ -32,9 +50,9 @@ Both ideas are not novel, but would let me explore the game engine (below) and a
 
 In the end I opted for the platformer because it was easier to implement, given the time and resource constraints.
 
-## Implementation
+### Implementation
 
-### Choice of engine
+#### Choice of engine
 
 I considered a number of options:
 
@@ -55,7 +73,7 @@ Creating even a simple platformer would have been a pain in Processing but was r
 
 I relied heavily on Godot's documentation and a Udemy course I've been meaning to complete since sophomore year.
 
-### Communication between ESP32 and the game
+#### Communication between ESP32 and the game
 
 Godot has little support for WebSockets and Serial data input. I tried to figure out the best way to get data from the ESP32 to the game.
 
