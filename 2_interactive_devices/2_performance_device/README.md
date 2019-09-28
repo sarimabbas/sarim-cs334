@@ -62,7 +62,7 @@ For all installation methods, this is required.
 2. Run `frt_095_311_pi2.bin --main-pack game.pck`
 3. Use an attached keyboard to play
 
-> Step 2 cannot be run via SSH, since X11 is required. Use VNC or connect the Raspberry Pi to a monitor instead.
+> Step 2 cannot be run via SSH, since X11 is required. Do it on boot, use VNC or connect the Raspberry Pi to a monitor instead.
 
 #### Use ESP32 with hardware controls
 
