@@ -125,7 +125,7 @@ I considered a number of options:
 
 - Processing: no physics or other nice features. Have to code all logic yourself
 - Godot: popular engine but runs slowly on Raspberry Pi
-- LOVE: runs well on the Pi and similar to Processing, but uses Lua, with which I'm unfamiliar
+- LÖVE: runs well on the Pi and similar to Processing, but uses Lua, with which I'm unfamiliar
 
 In the end I elected to use Godot, using an older renderer which has compatibility with most hardware.
 
