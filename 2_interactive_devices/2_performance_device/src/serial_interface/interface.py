@@ -5,9 +5,6 @@ import serial
 import time
 import pyautogui
 
-# Type a lower case A; this will work even if no key on the
-# physical keyboard is labelled 'A'
-
 ser = serial.Serial(port="/dev/cu.usbmodem14101", baudrate=9600)
 print(ser.name)
 
