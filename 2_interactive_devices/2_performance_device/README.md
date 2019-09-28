@@ -59,6 +59,23 @@ Leave the terminal running in the background and focus on the game window. The g
 1. You can use the browser, following the same process as with the Raspberry Pi
 2. Use an attached keyboard to play
 
+## Gameplay guide
+
+You are in control of a bunny. Hop across the platforms and try to reach the end of the level. Do not fall far or hit spikes.
+
+### Keyboard controls
+
+- `w` to jump
+- `a` to move left
+- `d` to move right
+- `s` to switch character
+
+### ESP32 hardware controls
+
+- Move the joystick left or right to move in that direction
+- Press the momentary button to jump
+- Flip the pole switch to switch character
+
 ## Development process
 
 ### Ideation
