@@ -150,7 +150,7 @@ In the end, I had a setup like the diagram below:
 
 - The ESP32 transmits input data over serial
 - A Python helper program on the Pi transforms those inputs into simulated key presses
-- The Godot game window remains in focus on the Pi, and receives the keypresses.
+- The Godot game window remains in focus on the Pi, and receives the key presses.
 
 ## Attribution
 
