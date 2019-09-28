@@ -146,6 +146,8 @@ Godot has little support for WebSockets and Serial data input. I tried to figure
 
 In the end, I had a setup like the diagram below:
 
+![Connections](./docs/connections.jpeg)
+
 - The ESP32 transmits input data over serial
 - A Python helper program on the Pi transforms those inputs into simulated key presses
 - The Godot game window remains in focus on the Pi, and receives the keypresses.
