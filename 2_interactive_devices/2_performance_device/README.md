@@ -21,17 +21,43 @@ Create a performance device. Performable is broadly interpreted and may include 
 
 ### Raspberry Pi
 
-1. Enable OpenGL driver support
-   - Run `sudo raspi-config`
-   - Advanced Settings > GL Driver > GL driver (Full KMS)
-2. `git clone` this repository to your computer
-3. Navigate to `2_interactive_devices/2_performance_device/dist/linux_32`
-4. Run `frt_095_311_pi2.bin --main-pack game.pck`
-5. Use an attached keyboard to play
+#### Enable OpenGL support
 
-### macOS
+For all installation methods, this is required.
 
+1. Run `sudo raspi-config`
+2. Advanced Settings > GL Driver > GL driver (Full KMS)
 
+#### Use the browser
+
+1. Navigate to the `2_interactive_devices/2_performance_device/dist/html5` directory in a Terminal and run `python3 -m http.server`
+2. Use a WebAssembly supported browser to navigate to `0.0.0.0:8000/Platformer Game.html`
+3. Use an attached keyboard to play
+
+#### Use the compiled binary (smoother experience)
+
+1. Navigate to `2_interactive_devices/2_performance_device/dist/linux_32`
+2. Run `frt_095_311_pi2.bin --main-pack game.pck`
+3. Use an attached keyboard to plays
+
+> Step 2 cannot be run via SSH, since X11 is required. Use VNC or connect the Raspberry Pi to a monitor instead.
+
+#### Use ESP32 with hardware controls
+
+First, make sure the hardware is connected as follows:
+
+Then:
+
+1. Navigate to `2_interactive_devices/2_performance_device/src/serial_interface`
+2. Install dependencies with `pip3 install -r requirements.txt` (virtual environment recommended)
+3. Run `python3 interface.py`  
+
+Leave the terminal running in the background and focus on the game window. The game will intercept the hardware input.
+
+### Other platforms (Windows, macOS)
+
+1. You can use the browser, following the same process as with the Raspberry Pi
+2. Use an attached keyboard to play
 
 ## Development process
 
