@@ -24,7 +24,7 @@ In this assignment, Processing was used to interface with the Raspberry Pi.
 
 The joystick controls the movement of a shape across the screen. 
 
-#### Execution 
+#### Execution
 
 The three modes are:
 
@@ -35,6 +35,6 @@ The three modes are:
 
 #### Usage
 
-- Open the sketch file in Processing
+- Open the sketch from `src` in Processing
 - Look at the `setup()` function to see how to connect the pins of the GPIO to the respective components
 - Run the sketch
