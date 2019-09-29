@@ -9,4 +9,9 @@
 ### Modules
 
 - Module 1: [Generative Art](./1_generative_art/)
+
+![Gen Art](./1_generative_art/docs/inside.png)
+
 - Module 2: [Interactive Devices](./2_interactive_devices/)
+
+![Int Devices](./2_interactive_devices/2_performance_device/docs/screen.png)
