@@ -10,7 +10,7 @@
 
 - Module 1: [Generative Art](./1_generative_art/)
 
-![Gen Art](./1_generative_art/docs/inside.png)
+<img src="./1_generative_art/docs/inside.png" height="500px"/>
 
 - Module 2: [Interactive Devices](./2_interactive_devices/)
 
