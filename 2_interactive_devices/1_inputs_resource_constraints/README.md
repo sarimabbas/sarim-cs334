@@ -2,6 +2,8 @@
 
 ## Module 2: Interactive Devices
 
+![Setup](./docs/setup.jpg)
+
 ### Task 1
 
 #### Provided equipment
