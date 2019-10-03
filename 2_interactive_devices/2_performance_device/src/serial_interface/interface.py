@@ -2,10 +2,15 @@
 
 import serial
 import time
+
 import pyautogui
+from pynput.keyboard import Key, Controller
+
 
 PORT = "/dev/cu.SLAB_USBtoUART"
 BAUDRATE = 9600
+
+keyboard = Controller()
 
 ser = serial.Serial(port=PORT, baudrate=BAUDRATE)
 print(ser.name)
@@ -13,47 +18,49 @@ print(ser.name)
 
 def loop():
     while True:
+        parsed = ""
         get_val = ser.readline()
-        parsed = parseSerial(get_val)
-        if parsed == "momentary":
-            sendJump()
-        elif parsed == "joyLeft":
-            sendLeft()
-        elif parsed == "joyRight":
-            sendRight()
-        elif parsed == "switch":
-            sendSwitchCharacter()
-        time.sleep(0.1)
+        parsed = get_val.decode("utf-8")
+        print(parsed)
+
+        handleJoystick(parsed)
+
+        # keyboard.release("d")
+        # if "momentary" in parsed:
+        #     sendJump()
+        # elif "joyLeft" in parsed:
+        #     sendLeft()
+        # elif "joyRight" in parsed:
+        #     sendRight()
+        # elif "switch" in parsed:
+        #     sendSwitchCharacter()
+        # time.sleep(0.01)
 
 
-def parseSerial(val_binary):
-    # convert val to string
-    val_string = val_binary.decode("utf-8")
-    print(val_string)
-    if "momentary" in val_string:
-        return "momentary"
-
-
-def sendJump():
-    keyPress("w")
+def handleJoystick(parsed):
+    while "joyRight" in parsed:
+        keyboard.press("d")
+    keyboard.release()
 
 
 def sendLeft():
-    keyPress("a")
+    pyautogui.press("a")
 
 
 def sendRight():
-    keyPress("d")
+    pyautogui.press("d")
+
+
+def sendJump():
+    pyautogui.keyDown("w")
+    time.sleep(0.02)
+    pyautogui.keyUp("w")
 
 
 def sendSwitchCharacter():
-    keyPress("s")
-
-
-def keyPress(key):
-    pyautogui.keyDown(key)
+    pyautogui.keyDown("s")
     time.sleep(0.02)
-    pyautogui.keyUp(key)
+    pyautogui.keyUp("s")
 
 
 if __name__ == "__main__":
