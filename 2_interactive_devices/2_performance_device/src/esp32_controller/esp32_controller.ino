@@ -37,4 +37,8 @@ void loop()
     {
         Serial.println("joyRight");
     }
+    else
+    {
+        Serial.println("joyNone");
+    }
 }
