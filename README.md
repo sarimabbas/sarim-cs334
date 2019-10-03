@@ -14,5 +14,4 @@
 
 - Module 2: [Interactive Devices](./2_interactive_devices/)
 
-<img src="./2_interactive_devices/2_performance_device/docs/screen.png" height="500px" alt="Interactive Devices"/>
-
+<img src="./2_interactive_devices/2_performance_device/docs/finalenclosures.jpg"  alt="Interactive Devices"/>
