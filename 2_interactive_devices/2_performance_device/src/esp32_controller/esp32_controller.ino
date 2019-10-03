@@ -7,33 +7,33 @@
 #define JOY_VRY_PIN 33
 
 Button momentaryBtn(MOMENTARY_PIN);
-// AxisJoystick jstick(-1, JOY_VRX_PIN, JOY_VRY_PIN);
-int jstickX = 2000;
+AxisJoystick jstick(-1, JOY_VRX_PIN, JOY_VRY_PIN);
+// int jstickX = 2000;
 
 void setup()
 {
     // Set pin mode
     Serial.begin(9600);
     momentaryBtn.begin();
-    // jstick.calibrate(0, 4095, 500);
+    jstick.calibrate(0, 4095);
 }
 
 void loop()
 {
     // read inputs
     momentaryBtn.read();
-    jstickX = analogRead(JOY_VRX_PIN);
+    jstick.multipleRead();
 
     if (momentaryBtn.wasPressed())
     {
         Serial.println("momentary");
     }
 
-    if (jstickX < 1000)
+    if (jstick.isLeft())
     {
         Serial.println("joyLeft");
     }
-    else if (jstickX > 3000)
+    else if (jstick.isRight())
     {
         Serial.println("joyRight");
     }

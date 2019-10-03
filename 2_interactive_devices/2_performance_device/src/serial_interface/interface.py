@@ -13,48 +13,41 @@ keyboard = Controller()
 ser = serial.Serial(port=PORT, baudrate=BAUDRATE)
 print(ser.name)
 
-global_vars = {"prev_parsed": "", "parsed": ""}
+global_vars = {
+    "prev_parsed": "",
+    "parsed": "",
+    "joyLeftHeld": False,
+    "joyRightHeld": False,
+}
 
 
 def loop():
     while True:
+        # read serial
         get_val = ser.readline()
+        # update globals
         global_vars["prev_parsed"] = global_vars["parsed"]
         global_vars["parsed"] = get_val.decode("utf-8")
+        # emulate inputs
         handleJoystick()
         handleButtons()
 
-        # keyboard.release("d")
-        # if "momentary" in parsed:d
-        #     sendJump()
-        # elif "joyLeft" in parsed:
-        #     sendLeft()
-        # elif "joyRight" in parsed:
-        #     sendRight()
-        # elif "switch" in parsed:
-        #     sendSwitchCharacter()
-
 
 def handleJoystick():
-    # if "joyRight" in global_vars["parsed"]:
-    #     if not "joyRight" in global_vars["prev_parsed"]:
-    #         keyboard.press("d")
-    # else:
-    #     keyboard.release("d")
-    if (
-        "joyRight" in global_vars["parsed"]
-        and "joyRight" not in global_vars["prev_parsed"]
-    ):
-        keyboard.press("d")
-    elif (
-        "joyLeft" in global_vars["parsed"]
-        and "joyLeft" not in global_vars["prev_parsed"]
-    ):
-        keyboard.press("a")
 
-    if "joyNone" in global_vars["parsed"]:
+    if "joyRight" in global_vars["parsed"] and not global_vars["joyRightHeld"]:
+        keyboard.press("d")
+        global_vars["joyRightHeld"] = True
+
+    elif "joyLeft" in global_vars["parsed"] and not global_vars["joyLeftHeld"]:
+        keyboard.press("a")
+        global_vars["joyLeftHeld"] = True
+
+    elif "joyNone" in global_vars["parsed"]:
         keyboard.release("a")
         keyboard.release("d")
+        global_vars["joyRightHeld"] = False
+        global_vars["joyLeftHeld"] = False
 
 
 def handleButtons():
