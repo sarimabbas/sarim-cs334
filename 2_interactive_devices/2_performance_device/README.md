@@ -171,9 +171,9 @@ In the end, I had a setup like the diagram below:
 
 Godot is able to cross-compile for multiple platforms, and also create a browser version of the game based on WebAssembly. However, there are a few gotchas to be aware of:
 
-- If compiling to macOS native or WebAssembly for macOS, use Godot's GLES3 renderer so that performance is smooth
-- If compiling to Raspberry Pi native or WebAssembly for Pi, use Godot's older GLES2 render. Otherwise, the game will not run
-  - For the native binary, I use [https://github.com/efornara/frt](https://github.com/efornara/frt). It is a platform that runs Godot binaries on single board computers. I've bundled this with the Linux distribution, and it is included in the install instructions
+- If compiling for macOS, use Godot's GLES3 renderer so that performance is smooth
+- If compiling for Raspberry Pi, use Godot's older GLES2 render. Otherwise, the game will not run
+  - For the native binary, I use [https://github.com/efornara/frt](https://github.com/efornara/frt). It is a platform that runs Godot binaries on single board computers. I've bundled this with the `linux32_gl2` distribution, and it is included in the install instructions
 
 ## Attribution
 
