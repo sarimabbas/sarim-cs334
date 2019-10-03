@@ -179,7 +179,7 @@ For all installation methods, this is required.
 
 #### Use the browser
 
-1. Navigate to the `dist/html5_gl3` directory in a Terminal and run `python3 -m http.server`
+1. Navigate to the `dist/html5_gl2` directory in a Terminal and run `python3 -m http.server`
 2. Use a WebAssembly supported browser to navigate to `0.0.0.0:8000/Platformer Game.html`
 3. Use an attached keyboard to play
 
@@ -193,8 +193,9 @@ For all installation methods, this is required.
 
 ### Other platforms (Windows, macOS)
 
-1. You can use the browser, following the same process as with the Raspberry Pi
-2. Use an attached keyboard to play
+1. Navigate to the `dist/html5_gl3` directory in a Terminal and run `python3 -m http.server`
+2. Use a WebAssembly supported browser to navigate to `0.0.0.0:8000/Platformer Game.html`
+3. Use an attached keyboard to play
 
 ### Use ESP32 with hardware controls
 
