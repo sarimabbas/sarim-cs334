@@ -8,7 +8,19 @@
 
 Button momentaryBtn(MOMENTARY_PIN);
 AxisJoystick jstick(-1, JOY_VRX_PIN, JOY_VRY_PIN);
-// int jstickX = 2000;
+
+int poleSwitchPrev = 0;
+int poleSwitch = 0;
+
+void readToggle()
+{
+    int getVal = digitalRead(POLE_PIN);
+    delay(50);
+    if (digitalRead(POLE_PIN) == getVal)
+    {
+        poleSwitch = getVal;
+    }
+}
 
 void setup()
 {
@@ -16,6 +28,7 @@ void setup()
     Serial.begin(9600);
     momentaryBtn.begin();
     jstick.calibrate(0, 4095);
+    pinMode(POLE_PIN, INPUT_PULLUP);
 }
 
 void loop()
@@ -23,10 +36,17 @@ void loop()
     // read inputs
     momentaryBtn.read();
     jstick.multipleRead();
+    poleSwitchPrev = poleSwitch;
+    readToggle();
 
     if (momentaryBtn.wasPressed())
     {
         Serial.println("momentary");
+    }
+
+    if (poleSwitch != poleSwitchPrev)
+    {
+        Serial.println("switch");
     }
 
     if (jstick.isLeft())
@@ -39,6 +59,6 @@ void loop()
     }
     else
     {
-        Serial.println("joyNone");
+        // Serial.println("joyNone");
     }
 }
