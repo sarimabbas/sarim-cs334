@@ -12,8 +12,10 @@
       - [Enable OpenGL support](#enable-opengl-support)
       - [Use the browser](#use-the-browser)
       - [Use the compiled binary (smoother experience)](#use-the-compiled-binary-smoother-experience)
-      - [Use ESP32 with hardware controls](#use-esp32-with-hardware-controls)
     - [Other platforms (Windows, macOS)](#other-platforms-windows-macos)
+    - [Use ESP32 with hardware controls](#use-esp32-with-hardware-controls)
+      - [Schematic](#schematic)
+      - [Run software](#run-software)
   - [Gameplay guide](#gameplay-guide)
     - [Video demo](#video-demo)
     - [Keyboard controls](#keyboard-controls)
@@ -54,43 +56,47 @@ For all installation methods, this is required.
 
 #### Use the browser
 
-1. Navigate to the `2_interactive_devices/2_performance_device/dist/html5` directory in a Terminal and run `python3 -m http.server`
+1. Navigate to the `dist/html5_gl3` directory in a Terminal and run `python3 -m http.server`
 2. Use a WebAssembly supported browser to navigate to `0.0.0.0:8000/Platformer Game.html`
 3. Use an attached keyboard to play
 
 #### Use the compiled binary (smoother experience)
 
-1. Navigate to `2_interactive_devices/2_performance_device/dist/linux_32`
+1. Navigate to `dist/linux32_gl2`
 2. Run `frt_095_311_pi2.bin --main-pack game.pck`
 3. Use an attached keyboard to play
 
 > Step 2 cannot be run via SSH, since X11 is required. Do it on boot, use VNC or connect the Raspberry Pi to a monitor instead.
 
-#### Use ESP32 with hardware controls
+### Other platforms (Windows, macOS)
 
-First, make sure the hardware is connected as follows:
+1. You can use the browser, following the same process as with the Raspberry Pi
+2. Use an attached keyboard to play
 
-Then:
+### Use ESP32 with hardware controls
 
-1. Navigate to `2_interactive_devices/2_performance_device/src/serial_interface`
-2. Install dependencies with `pip3 install -r <PLATFORM>-requirements.txt` (virtual environment recommended).
+#### Schematic
+
+![Schematic](./docs/schematic.png)
+
+- `GPIO5`: Momentary button
+- `GPIO17`: SPST switch
+- `GPIO32`: Joystick Y-axis
+
+Once wired up, plug the ESP32 into the Raspberry Pi. The `serial_interface/interface.py` will assume the Pi is listening on `/dev/ttyUSB0`.
+
+#### Run software
+
+1. Navigate to `src/serial_interface`
+2. Install dependencies with `pip3 install -r <PLATFORM>_requirements.txt` (virtual environment recommended).
    1. Replace `<PLATFORM>` with either `linux` or `mac`
    2. For Linux, also install:
       1. `sudo apt-get install scrot`,
       2. `sudo apt-get install python3-tk`
       3. `sudo apt-get install python3-dev`
-      4. `pip3 install python3-xlib`
-   3. For macOS, also install:
-      1. `pip3 install pyobjc-core`
-      2. `pip3 install pyobjc`
 3. Run `python3 interface.py`  
 
-Leave the terminal running in the background and focus on the game window. The game will intercept the hardware input.
-
-### Other platforms (Windows, macOS)
-
-1. You can use the browser, following the same process as with the Raspberry Pi
-2. Use an attached keyboard to play
+Leave the terminal running in the background and focus on the game window. The interface will intercept the hardware input and relay it to the game.
 
 ## Gameplay guide
 

@@ -7,6 +7,7 @@ Pillow==6.2.0
 PyAutoGUI==0.9.47
 PyGetWindow==0.0.7
 PyMsgBox==1.0.7
+pynput==1.4.4
 pyobjc==5.2
 pyobjc-core==5.2
 pyobjc-framework-Accounts==5.2
@@ -110,4 +111,5 @@ PyRect==0.1.4
 PyScreeze==0.1.22
 pyserial==3.4
 PyTweening==1.0.3
+six==1.12.0
 toml==0.10.0
