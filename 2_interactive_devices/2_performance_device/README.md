@@ -72,7 +72,16 @@ First, make sure the hardware is connected as follows:
 Then:
 
 1. Navigate to `2_interactive_devices/2_performance_device/src/serial_interface`
-2. Install dependencies with `pip3 install -r requirements.txt` (virtual environment recommended)
+2. Install dependencies with `pip3 install -r <PLATFORM>-requirements.txt` (virtual environment recommended).
+   1. Replace `<PLATFORM>` with either `linux` or `mac`
+   2. For Linux, also install:
+      1. `sudo apt-get install scrot`,
+      2. `sudo apt-get install python3-tk`
+      3. `sudo apt-get install python3-dev`
+      4. `pip3 install python3-xlib`
+   3. For macOS, also install:
+      1. `pip3 install pyobjc-core`
+      2. `pip3 install pyobjc`
 3. Run `python3 interface.py`  
 
 Leave the terminal running in the background and focus on the game window. The game will intercept the hardware input.

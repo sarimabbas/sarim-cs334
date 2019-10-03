@@ -1,11 +1,13 @@
-#!/usr/bin/env python3
 # simulates and forwards keypresses to Godot
 
 import serial
 import time
 import pyautogui
 
-ser = serial.Serial(port="/dev/cu.usbmodem14101", baudrate=9600)
+PORT = "/dev/cu.SLAB_USBtoUART"
+BAUDRATE = 9600
+
+ser = serial.Serial(port=PORT, baudrate=BAUDRATE)
 print(ser.name)
 
 
@@ -24,8 +26,12 @@ def loop():
         time.sleep(0.1)
 
 
-def parseSerial():
-    pass
+def parseSerial(val_binary):
+    # convert val to string
+    val_string = val_binary.decode("utf-8")
+    print(val_string)
+    if "momentary" in val_string:
+        return "momentary"
 
 
 def sendJump():

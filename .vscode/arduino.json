@@ -1,5 +1,7 @@
 {
     "board": "esp32:esp32:esp32",
     "programmer": "AVRISP mkII",
-    "configuration": "PSRAM=disabled,PartitionScheme=default,CPUFreq=240,FlashMode=qio,FlashFreq=80,FlashSize=4M,UploadSpeed=921600,DebugLevel=none"
+    "configuration": "PSRAM=disabled,PartitionScheme=default,CPUFreq=240,FlashMode=qio,FlashFreq=80,FlashSize=4M,UploadSpeed=921600,DebugLevel=none",
+    "port": "/dev/cu.SLAB_USBtoUART",
+    "sketch": "2_interactive_devices/2_performance_device/src/esp32_controller/esp32_controller.ino"
 }
