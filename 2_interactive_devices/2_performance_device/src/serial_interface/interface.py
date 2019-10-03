@@ -1,12 +1,13 @@
 # simulates and forwards keypresses to Godot
 import serial
 import time
+import platform
 
 import pyautogui
 from pynput.keyboard import Key, Controller
 
 
-PORT = "/dev/cu.SLAB_USBtoUART"
+PORT = "/dev/cu.SLAB_USBtoUART" if "Darwin" in platform.system() else "/dev/ttyUSB0"
 BAUDRATE = 9600
 
 keyboard = Controller()
