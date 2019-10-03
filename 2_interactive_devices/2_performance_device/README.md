@@ -23,6 +23,7 @@
     - [Implementation](#implementation)
       - [Choice of engine](#choice-of-engine)
       - [Communication between ESP32 and the game](#communication-between-esp32-and-the-game)
+      - [Exporting to multiple platforms](#exporting-to-multiple-platforms)
   - [Attribution](#attribution)
 
 ## Task details
@@ -166,6 +167,14 @@ In the end, I had a setup like the diagram below:
 - A Python helper program on the Pi transforms those inputs into simulated key presses
 - The Godot game window remains in focus on the Pi, and receives the key presses.
 
+#### Exporting to multiple platforms
+
+Godot is able to cross-compile for multiple platforms, and also create a browser version of the game based on WebAssembly. However, there are a few gotchas to be aware of:
+
+- If compiling to macOS native or WebAssembly for macOS, use Godot's GLES3 renderer so that performance is smooth
+- If compiling to Raspberry Pi native or WebAssembly for Pi, use Godot's older GLES2 render. Otherwise, the game will not run
+  - For the native binary, I use [https://github.com/efornara/frt](https://github.com/efornara/frt). It is a platform that runs Godot binaries on single board computers. I've bundled this with the Linux distribution, and it is included in the install instructions
+
 ## Attribution
 
 - Use of Godot documentation and Udemy course
@@ -173,4 +182,3 @@ In the end, I had a setup like the diagram below:
   - Spell by Bart Kelsey
   - Chiptune Adventures by SubspaceAudio
 - Sprites from Kenney.nl
-
