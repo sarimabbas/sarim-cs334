@@ -3,11 +3,10 @@
 
 #define MOMENTARY_PIN 5
 #define POLE_PIN 17
-#define JOY_VRX_PIN 32
-#define JOY_VRY_PIN 33
+#define JOY_PIN 32
 
 Button momentaryBtn(MOMENTARY_PIN);
-AxisJoystick jstick(-1, JOY_VRX_PIN, JOY_VRY_PIN);
+AxisJoystick jstick(-1, -1, JOY_PIN);
 
 int poleSwitchPrev = 0;
 int poleSwitch = 0;
@@ -49,16 +48,16 @@ void loop()
         Serial.println("switch");
     }
 
-    if (jstick.isLeft())
+    if (jstick.isUp())
     {
         Serial.println("joyLeft");
     }
-    else if (jstick.isRight())
+    else if (jstick.isDown())
     {
         Serial.println("joyRight");
     }
     else
     {
-        // Serial.println("joyNone");
+        Serial.println("joyNone");
     }
 }

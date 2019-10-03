@@ -54,6 +54,9 @@ def handleButtons():
     if "momentary" in global_vars["parsed"]:
         sendJump()
 
+    if "switch" in global_vars["parsed"]:
+        sendSwitchCharacter()
+
 
 def sendLeft():
     pyautogui.press("a")
