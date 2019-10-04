@@ -8,7 +8,7 @@
   - [Table of contents](#table-of-contents)
   - [Task details](#task-details)
   - [Demos](#demos)
-    - [Final demo with all components](#final-demo-with-all-components)
+    - ["Promotional" video](#%22promotional%22-video)
     - [ESP32 hardware demo](#esp32-hardware-demo)
     - [Early gameplay demo](#early-gameplay-demo)
   - [Gameplay guide](#gameplay-guide)
@@ -51,9 +51,11 @@ Create a performance device. Performable is broadly interpreted and may include 
 
 Ordered by recency.
 
-### Final demo with all components
+### "Promotional" video
 
+Made as parody
 
+<https://www.youtube.com/watch?v=MQxkPw-gNHw>
 
 ### ESP32 hardware demo
 
