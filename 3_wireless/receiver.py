@@ -1,12 +1,13 @@
 import socket
 
-UDP_IP = "192.168.1.1"
-UDP_PORT = 57222
+LOCAL_UDP_IP = "192.168.1.2"
+SHARED_UDP_PORT = 5005
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)  # Internet  # UDP
-sock.bind((UDP_IP, UDP_PORT))
+sock.bind((LOCAL_UDP_IP, SHARED_UDP_PORT))
 
 while True:
-    data, addr = sock.recvfrom(1024)  # buffer size is 1024 bytes
+    print("jwehfgioewrh")
+    data, addr = sock.recvfrom(2048)  # buffer size is 1024 byte
     print("received message:", data)
 
