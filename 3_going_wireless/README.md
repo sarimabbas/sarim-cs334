@@ -9,8 +9,8 @@
 - [Going Wireless](#going-wireless)
   - [Table of contents](#table-of-contents)
   - [Overview](#overview)
-  - [Vision](#vision)
   - [Video demo](#video-demo)
+  - [Vision](#vision)
   - [Implementation](#implementation)
     - [Communication over WiFi](#communication-over-wifi)
     - [Enclosure](#enclosure)
@@ -29,6 +29,10 @@ The project utilizes some of the prior work done in Module 2. In particular it r
 
 These changes make the controller a more robust, flexible, general-purpose input device.
 
+## Video demo
+
+It can be viewed here: <https://www.youtube.com/watch?v=0Xa9AYKj17s>
+
 ## Vision
 
 The objective of the assignment was to break the traditional 1:1 link between the viewer and the art, taking advantage of wireless sensing and communication.
@@ -42,10 +46,6 @@ However, several modifications try to question or weaken this link. The first is
 Secondly, after observing classmates vigorously push the controller button from the last demo, I switched the button with a DIY, aluminum foil, capactive touch sensor. This switches the expectation for the button from being mashable to lightly tappable, which keeps the enclosure durable.
 
 Lastly, a photoresistor measures light levels of the player's environment. This data can be used to power unique experiences that link the player's environment to the game's. For instance, by detecting day and night-time, I am able to modify the game's music from upbeat to scary respectively. More sensor-powered interactions of this kind are possible. For example, an ultrasonic sensor on the controller can be programmed to make an LED flash when a visitor draws near, serving as a call to action. Or, proximity sensing may allow the game's graphics to scale responsively as the player steps further away from the screen, which could be great for accessibility. 
-
-## Video demo
-
-It can be viewed here: <https://www.youtube.com/watch?v=0Xa9AYKj17s>
 
 ## Implementation
 
