@@ -25,15 +25,23 @@ The project utilizes some of the prior work done in Module 2. In particular it r
 -   The controller is battery powered and has a charging circuit
 -   The controller has two additional sensors
     -   A DIY sensor
-    -   A photocell
+    -   A photoresistor
 
 These changes make the controller a more robust, flexible, general-purpose input device.
 
 ## Vision
 
-The assignment called for a breaking of the traditional 1:1 link between the viewer and the art. Instead of developing my game (with a controller, the link is obvious), I decided to revisit the Becton cafe, and create installation art.
+The objective of the assignment was to break the traditional 1:1 link between the viewer and the art, taking advantage of wireless sensing and communication.
 
--   The ultrasonic sensor on the controller is programmed to make its LEDs flash when a visitor gets near. This serves as a call to action
+I did not want to come up with a completely new project, but instead modify and recombine my previous assignments, consistent with the class reading on combinatorial creativity. 
+
+My previous project was an ESP32-powered game controller that would send inputs to a Godot game. However, the 1:1 link here is relatively obvious, since many people know the mapping between the controls and a game installation. 
+
+However, several modifications try to question or weaken this link. The first is the choice of enclosure. The electronics are housed in a box, which is not only pragmatic, but also belies any common affordances.
+
+Secondly, after observing classmates vigorously push the controller button from the last demo, I switched the button with a DIY, aluminum foil, capactive touch sensor. This switches the expectation for the button from being mashable to lightly tappable, which keeps the enclosure durable.
+
+Lastly, a photoresistor measures light levels of the player's environment. This data can be used to power unique experiences that link the player's environment to the game's. For instance, by detecting day and night-time, I am able to modify the game's music from upbeat to scary respectively. More sensor-powered interactions of this kind are possible. For example, an ultrasonic sensor on the controller can be programmed to make an LED flash when a visitor draws near, serving as a call to action. Or, proximity sensing may allow the game's graphics to scale responsively as the player steps further away from the screen, which could be great for accessibility. 
 
 ## Video demo
 
@@ -74,4 +82,4 @@ The DIY sensor is a capacitive touch sensor, acting as a momentary button. It is
 
 ![DIY sensor](./docs/diy.jpg)
 
-A photocell is also present, and sends ambient light levels to the console. The purpose of the sensor is to link the player's physical environment with the game environment.
+A photoresistor is also present, and sends ambient light levels to the console. The purpose of the sensor is to link the player's physical environment with the game environment.
