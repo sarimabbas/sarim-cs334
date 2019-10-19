@@ -24,6 +24,7 @@ def loop():
     while True:
         # read from udp
         get_val, addr = sock.recvfrom(2048)
+        # print(get_val)
         # update globals
         global_vars["prev_parsed"] = global_vars["parsed"]
         global_vars["parsed"] = get_val.decode("utf-8")
