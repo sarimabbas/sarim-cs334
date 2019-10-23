@@ -16,6 +16,7 @@
     - [Enclosure](#enclosure)
     - [Battery power](#battery-power)
     - [Additional sensors](#additional-sensors)
+  - [Breadboard schematic](#breadboard-schematic)
 
 ## Overview
 
@@ -37,15 +38,15 @@ It can be viewed here: <https://www.youtube.com/watch?v=0Xa9AYKj17s>
 
 The objective of the assignment was to break the traditional 1:1 link between the viewer and the art, taking advantage of wireless sensing and communication.
 
-I did not want to come up with a completely new project, but instead modify and recombine my previous assignments, consistent with the class reading on combinatorial creativity. 
+I did not want to come up with a completely new project, but instead modify and recombine my previous assignments, consistent with the class reading on combinatorial creativity.
 
-My previous project was an ESP32-powered game controller that would send inputs to a Godot game. However, the 1:1 link here is relatively obvious, since many people know the mapping between the controls and a game installation. 
+My previous project was an ESP32-powered game controller that would send inputs to a Godot game. However, the 1:1 link here is relatively obvious, since many people know the mapping between the controls and a game installation.
 
 However, several modifications try to question or weaken this link. The first is the choice of enclosure. The electronics are housed in a box, which is not only pragmatic, but also belies any common affordances.
 
 Secondly, after observing classmates vigorously push the controller button from the last demo, I switched the button with a DIY, aluminum foil, capactive touch sensor. This switches the expectation for the button from being mashable to lightly tappable, which keeps the enclosure durable.
 
-Lastly, a photoresistor measures light levels of the player's environment. This data can be used to power unique experiences that link the player's environment to the game's. For instance, by detecting day and night-time, I am able to modify the game's music from upbeat to scary respectively. More sensor-powered interactions of this kind are possible. For example, an ultrasonic sensor on the controller can be programmed to make an LED flash when a visitor draws near, serving as a call to action. Or, proximity sensing may allow the game's graphics to scale responsively as the player steps further away from the screen, which could be great for accessibility. 
+Lastly, a photoresistor measures light levels of the player's environment. This data can be used to power unique experiences that link the player's environment to the game's. For instance, by detecting day and night-time, I am able to modify the game's music from upbeat to scary respectively. More sensor-powered interactions of this kind are possible. For example, an ultrasonic sensor on the controller can be programmed to make an LED flash when a visitor draws near, serving as a call to action. Or, proximity sensing may allow the game's graphics to scale responsively as the player steps further away from the screen, which could be great for accessibility.
 
 ## Implementation
 
@@ -83,3 +84,7 @@ The DIY sensor is a capacitive touch sensor, acting as a momentary button. It is
 ![DIY sensor](./docs/diy.jpg)
 
 A photoresistor is also present, and sends ambient light levels to the console. The purpose of the sensor is to link the player's physical environment with the game environment.
+
+## Breadboard schematic
+
+![Schematic bb](./docs/schematic_bb.png)
