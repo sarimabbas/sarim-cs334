@@ -5,6 +5,7 @@
 - [CPSC 334 - Creative Embedded Systems](#cpsc-334---creative-embedded-systems)
   - [Table of Contents](#table-of-contents)
   - [Modules](#modules)
+    - [Module 4: Kinetic Sculpture](#module-4-kinetic-sculpture)
     - [Module 3: Going Wireless](#module-3-going-wireless)
     - [Module 2: Interactive Devices](#module-2-interactive-devices)
     - [Module 1: Generative Art](#module-1-generative-art)
@@ -12,6 +13,10 @@
 ## Modules
 
 > Descending order
+
+### Module 4: [Kinetic Sculpture](./4_kinetic_sculpture/)
+
+<img src="./4_kinetic_sculpture/docs/images/cover.jpg"  alt="Kinetic Sculpture"/>
 
 ### Module 3: [Going Wireless](./3_going_wireless/)
 
