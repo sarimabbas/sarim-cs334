@@ -6,10 +6,29 @@
 
 - [Musical Instrument](#musical-instrument)
   - [Table of Contents](#table-of-contents)
+  - [Budget](#budget)
   - [Technical Challenges](#technical-challenges)
     - [HC-SR04 readings](#hc-sr04-readings)
     - [Photosensor readings](#photosensor-readings)
     - [MIDI setup](#midi-setup)
+
+## Budget
+
+| Name                  | Units | \$/unit      | Total \$ cost |
+| --------------------- | ----- | ------------ | ------------- |
+| Wooden dowels         | 2     | Free in CEID | 0             |
+| 13 x 11 acrylic piece | 1     | Free in CEID | 0             |
+| Laser diodes          | 13    | 0.55         | 7.15          |
+| Photoresistors        | 13    | Free in CEID | 0             |
+| DAW e.g. Logic        | 1     | Variable     | -             |
+
+Tools required:
+
+- Laser cutter
+- Drill
+- Hot glue
+- Wire cutter
+- Soldering iron
 
 ## Technical Challenges
 
