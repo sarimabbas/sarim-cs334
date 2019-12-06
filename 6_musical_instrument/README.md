@@ -8,11 +8,33 @@
   - [Table of Contents](#table-of-contents)
   - [Technical Challenges](#technical-challenges)
     - [HC-SR04 readings](#hc-sr04-readings)
+    - [Photosensor readings](#photosensor-readings)
+    - [MIDI setup](#midi-setup)
 
 ## Technical Challenges
 
 ### HC-SR04 readings
 
-Having used the sensor in a previous project, the readings can be quite volatile and noisy. For the instrument, much smoother transitions are required. One suggestion was to drive smoother *changes* to a distance measure rather than updating absolute distance. Another was to take multiple readings, discard outliers and take the average. 
+Having used the sensor in a previous project, the readings can be quite volatile and noisy. For the instrument, much smoother transitions are required. One suggestion was to drive smoother _changes_ to a distance measure rather than updating absolute distance. Another was to take multiple readings, discard outliers and take the average.
 
-Eventually, I found a library called NewPing that does a median computation automatically. Moreover, it can work with a single pin input from the sensor, which works well, since the instrument makes use of many such sensors. 
+Eventually, I found a library called NewPing that does a median computation automatically. Moreover, it can work with a single pin input from the sensor, which works well, since the instrument makes use of many such sensors.
+
+### Photosensor readings
+
+Analog: range from 150- for dark to 500 for ambient to 1500+ for bright, directed light.
+
+### MIDI setup
+
+Many options were tried:
+
+- ESP32 MIDI BLE => MIDI in to Logic on macOS
+- ESP32 Serial Out => Python Script on macOS => MIDI in to Logic on macOS
+- ESP32 MIDI over Serial Out => HairlessMidi app on macOS => MIDI in to Logic on macOS
+
+The first option was not reliable as the Bluetooth connection between the ESP32 and macOS kept dropping.
+
+The second and third options are quite similar, but whereas I would have had to write the logic by myself in Python using a library like [Mido](https://mido.readthedocs.io/en/latest/), with HairlessMidi this is already taken care of.
+
+HairlessMidi is currently compiled for 32-bit, which posed a problem since I am using macOS Catalina. However, [this GitHub issue](https://github.com/projectgus/hairless-midiserial/issues/51) has an experimental 64-bit version. However, the Preferences must be re-saved in order for the program to work without crashing.
+
+The HairlessMidi website describes the required setup. Initially, an IAC Driver Bus must be enabled in the macOS MIDI settings.
