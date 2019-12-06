@@ -58,4 +58,4 @@ The second and third options are quite similar, but whereas I would have had to 
 
 Hairless MIDI is currently compiled for 32-bit, which posed a problem since I am using macOS Catalina. However, [this GitHub issue](https://github.com/projectgus/hairless-midiserial/issues/51) has an experimental 64-bit version. However, the Preferences must be re-saved in order for the program to work without crashing.
 
-The Hairless MIDI website describes the required setup, which involves enabling an IAC Driver Bus in the macOS MIDI settings.
+The Hairless MIDI website [describes the required setup](https://projectgus.github.io/hairless-midiserial/), which involves enabling an IAC Driver Bus in the macOS MIDI settings.
