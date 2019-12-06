@@ -25,6 +25,8 @@ Analog: range from 150- for dark to 500 for ambient to 1500+ for bright, directe
 
 ### MIDI setup
 
+![MIDI setup](./docs/midi_setup.png)
+
 Many options were tried:
 
 - ESP32 MIDI BLE => MIDI in to Logic on macOS
