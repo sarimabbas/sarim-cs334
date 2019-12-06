@@ -50,12 +50,12 @@ Many options were tried:
 
 - ESP32 MIDI BLE => MIDI in to Logic on macOS
 - ESP32 Serial Out => Python Script on macOS => MIDI in to Logic on macOS
-- ESP32 MIDI over Serial Out => HairlessMidi app on macOS => MIDI in to Logic on macOS
+- ESP32 MIDI over Serial Out => Hairless MIDI app on macOS => MIDI in to Logic on macOS
 
 The first option was not reliable as the Bluetooth connection between the ESP32 and macOS kept dropping.
 
-The second and third options are quite similar, but whereas I would have had to write the logic by myself in Python using a library like [Mido](https://mido.readthedocs.io/en/latest/), with HairlessMidi this is already taken care of.
+The second and third options are quite similar, but whereas I would have had to write the logic by myself in Python using a library like [Mido](https://mido.readthedocs.io/en/latest/), with Hairless MIDI this is already taken care of.
 
-HairlessMidi is currently compiled for 32-bit, which posed a problem since I am using macOS Catalina. However, [this GitHub issue](https://github.com/projectgus/hairless-midiserial/issues/51) has an experimental 64-bit version. However, the Preferences must be re-saved in order for the program to work without crashing.
+Hairless MIDI is currently compiled for 32-bit, which posed a problem since I am using macOS Catalina. However, [this GitHub issue](https://github.com/projectgus/hairless-midiserial/issues/51) has an experimental 64-bit version. However, the Preferences must be re-saved in order for the program to work without crashing.
 
-The HairlessMidi website describes the required setup. Initially, an IAC Driver Bus must be enabled in the macOS MIDI settings.
+The Hairless MIDI website describes the required setup, which involves enabling an IAC Driver Bus in the macOS MIDI settings.
