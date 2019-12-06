@@ -5,6 +5,7 @@
 - [CPSC 334 - Creative Embedded Systems](#cpsc-334---creative-embedded-systems)
   - [Table of Contents](#table-of-contents)
   - [Modules](#modules)
+    - [Module 5: Distributed Network](#module-5-distributed-network)
     - [Module 4: Kinetic Sculpture](#module-4-kinetic-sculpture)
     - [Module 3: Going Wireless](#module-3-going-wireless)
     - [Module 2: Interactive Devices](#module-2-interactive-devices)
@@ -13,6 +14,10 @@
 ## Modules
 
 > Descending order
+
+### Module 5: [Distributed Network](./5_distributed_network/)
+
+<img src="./5_distributed_network/mesh/sarim-earth-input/docs/volcano_painted.png"  alt="Distributed Network"/>
 
 ### Module 4: [Kinetic Sculpture](./4_kinetic_sculpture/)
 
