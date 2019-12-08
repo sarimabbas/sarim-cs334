@@ -11,6 +11,7 @@
     - [HC-SR04 readings](#hc-sr04-readings)
     - [Photosensor readings](#photosensor-readings)
     - [MIDI setup](#midi-setup)
+    - [ESP32 issues](#esp32-issues)
   - [Enclosure design](#enclosure-design)
 
 ## Budget
@@ -60,6 +61,10 @@ The second and third options are quite similar, but whereas I would have had to 
 Hairless MIDI is currently compiled for 32-bit, which posed a problem since I am using macOS Catalina. However, [this GitHub issue](https://github.com/projectgus/hairless-midiserial/issues/51) has an experimental 64-bit version. However, the Preferences must be re-saved in order for the program to work without crashing.
 
 The Hairless MIDI website [describes the required setup](https://projectgus.github.io/hairless-midiserial/), which involves enabling an IAC Driver Bus in the macOS MIDI settings.
+
+### ESP32 issues
+
+- Some pins (e.g. GPIO 13) are used for boot up, and setting them as INPUT interferes with the flashing process. The solution is not to use the pin or leave it unplugged during boot. [Relevant issue on Github](https://github.com/espressif/esp-idf/issues/113).
 
 ## Enclosure design
 
