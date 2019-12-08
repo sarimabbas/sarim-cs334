@@ -11,6 +11,7 @@
     - [HC-SR04 readings](#hc-sr04-readings)
     - [Photosensor readings](#photosensor-readings)
     - [MIDI setup](#midi-setup)
+  - [Enclosure design](#enclosure-design)
 
 ## Budget
 
@@ -59,3 +60,9 @@ The second and third options are quite similar, but whereas I would have had to 
 Hairless MIDI is currently compiled for 32-bit, which posed a problem since I am using macOS Catalina. However, [this GitHub issue](https://github.com/projectgus/hairless-midiserial/issues/51) has an experimental 64-bit version. However, the Preferences must be re-saved in order for the program to work without crashing.
 
 The Hairless MIDI website [describes the required setup](https://projectgus.github.io/hairless-midiserial/), which involves enabling an IAC Driver Bus in the macOS MIDI settings.
+
+## Enclosure design
+
+Initially I had wanted to make the instrument a black-box, which would add to the mystery of the workings of the instrument. But after accidentally laser cutting a piece of acrylic instead of wood, I thought it would be interesting to pivot and give the user/viewer insight into the bare metal.
+
+To effectively showcase the inner workings and electronics, I gave lots of thought to the circuit layout, its symmetry and color coding of wiring. The photoresistors, for example, are soldered to common rails to minimize clutter.

@@ -1,62 +1,59 @@
-#include <Control_Surface.h>
+#include <MIDI.h>
 
-#define NUM_BEAMS 1
+// constants
+#define NUM_BEAMS 13
 #define BEAM_HIGH 4095
 #define BEAM_ACTIVATION_THRESHOLD 3500
 
-BluetoothMIDI_Interface midi;
+// init MIDI 
+MIDI_CREATE_DEFAULT_INSTANCE();
 
-using namespace MIDI_Notes;
-
+// prototypes
 void readPins();
-void printBeamActives();
+void printBeamStates();
 
-int beams[] = { 33 };  
-bool beam_actives[] = { false };
+// laser diode beam tracking 
+int pins[NUM_BEAMS] = { 34, 35, 32, 33, 25, 26, 27, 14, 12, 13, 4, 0, 2 };
+bool beamStates[NUM_BEAMS] = { false, false, false, false, false, false, false, false, false, false, false, false, false };
+int notes[NUM_BEAMS] = { 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72 };
 
-void setup() {
-  Control_Surface.begin();
-  Serial.begin(9600);
+void setup() { 
+  // start midi over serial
+  MIDI.begin(MIDI_CHANNEL_OMNI);
+  Serial.begin(115200);
 
+  // init all beams
   for(int i = 0; i < NUM_BEAMS; i++) {
-    pinMode(beams[i], INPUT);
+    pinMode(pins[i], INPUT);
   }
 }
 
 void loop() {
   readPins();
-
-  // Send note 42 with velocity 127 on channel 1
-  MIDI.sendNoteOn(42, 127, 1);
-
-  delay(50);
-
-  
-//  printBeamActives();
+  delay(80);
 }
 
 void readPins() {
   int value = BEAM_HIGH;
   for (int i = 0; i < NUM_BEAMS; i++) {
-    value = analogRead(beams[i]);
+    value = analogRead(pins[i]);
     if (value > BEAM_ACTIVATION_THRESHOLD) {
-      beam_actives[i] = true;
+        // only send note if not already sent
+        if (beamStates[i] != true) {
+          MIDI.sendNoteOn(notes[i], 127, 1);
+        }
+        beamStates[i] = true;
     } else {
-      beam_actives[i] = false;
+        beamStates[i] = false;
+        MIDI.sendNoteOff(notes[i], 127, 1);
     }
   }
 }
 
-void loadScale() {
-  for(int i = 0; i < NUM_BEAMS; i++) {
-    
-  }
-}
-
-void printBeamActives() {
+void printBeamStates() {
   Serial.print("[");
   for (int i = 0; i < NUM_BEAMS; i++) {
-    Serial.print(beam_actives[i]);
+    Serial.print(beamStates[i]);
     Serial.print(", ");
   }
   Serial.println("]");
