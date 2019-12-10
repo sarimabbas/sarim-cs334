@@ -13,6 +13,7 @@
     - [MIDI setup](#midi-setup)
     - [ESP32 issues](#esp32-issues)
   - [Enclosure design](#enclosure-design)
+    - [Use of display and rotary encoder](#use-of-display-and-rotary-encoder)
 
 ## Budget
 
@@ -71,3 +72,15 @@ The Hairless MIDI website [describes the required setup](https://projectgus.gith
 Initially I had wanted to make the instrument a black-box, which would add to the mystery of the workings of the instrument. But after accidentally laser cutting a piece of acrylic instead of wood, I thought it would be interesting to pivot and give the user/viewer insight into the bare metal.
 
 To effectively showcase the inner workings and electronics, I gave lots of thought to the circuit layout, its symmetry and color coding of wiring. The photoresistors, for example, are soldered to common rails to minimize clutter.
+
+### Use of display and rotary encoder
+
+To add the octave switching functionality, I paired a rotary encoder to act as a dial, with a display providing feedback. The display also provides feedback during the startup calibration sequence.
+
+Surprisingly, the display does not require VCC and GND connections, and the data pin connections suffice.
+
+Both components are mounted on independent breadboards to make the instrument modular.
+
+The rotary encoder saturates at very low or high values, which allows the user to easily cycle through the octaves.
+
+The encoder library used has an outdated version available in the Arduino Library manager, so I manually downloaded and included the master branch available at its GitHub page.
