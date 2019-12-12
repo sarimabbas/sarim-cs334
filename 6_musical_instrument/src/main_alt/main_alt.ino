@@ -74,7 +74,7 @@ void setup() {
 void loop() {
   dialToOctave();
   sensorRead();
-//  sensorDebug();
+//  sensorDebug(); 
   sendMidi();
 }
 
@@ -108,12 +108,19 @@ void sequenceCalibration() {
     delay(1000);  
   }
 
+  // give notice for low read
+  for (int i = 5; i > 0; i--) {
+    disp.setCursor(0,0);
+    displayText("Reading sensors. \nCountdown: " + String(i));
+    delay(1000);  
+  }
+
   // get all the photosensor readings in LOW state
-//  int value = -1;
-//  for (int i = 0; i < NUM_PINS; i++) {
-//    value = analogRead(pins[i]); 
-//    lows[i] = value;
-//  }
+  int value = -1;
+  for (int i = 0; i < NUM_PINS; i++) {
+    value = analogRead(pins[i]); 
+    lows[i] = value;
+  }
   
   // have the user turn the lasers on
   for (int i = 10; i > 0; i--) {
@@ -123,16 +130,18 @@ void sequenceCalibration() {
   }
 
   // get all the photosensor readings in HIGH state
-  int value = -1;
+  value = -1;
   for (int i = 0; i < NUM_PINS; i++) {
     value = analogRead(pins[i]); 
     highs[i] = value;
   }
 
   // do a calculation to determine thresholds for photosensors and update the array 
+  // the threshold is HIGH - % of the HIGH-LOW range
+  int range; 
   for (int i = 0; i < NUM_PINS; i++) {
-    value = analogRead(pins[i]); 
-    thresholds[i] = (highs[i] - 200);
+    range = highs[i] + lows[i];
+    thresholds[i] = highs[i] - ((range * 35) / 100);
   }
 
   // show completion notice
@@ -260,17 +269,29 @@ void sensorRead() {
 }
 
 void sendMidi() {
+  // for each pin
   for (int i = 0; i < NUM_PINS; i++) {
-    if (readings[i] < thresholds[i]) {
-      if (beamStates[i] != true) {
-        MIDI.sendNoteOn(notes[i], 127, 1);
-      }
-      beamStates[i] = true;
-    } else {
-        beamStates[i] = false;
-        MIDI.sendNoteOff(notes[i], 127, 1);
+
+    // figure out which state it is in
+
+    // in neutral state
+    if (keyStates[i] == KEY_NEUTRAL) {
+       // finger pressed? 
+       if (readings[i] < thresholds[i]) {
+           keyStates[i] = KEY_ON;
+           MIDI.sendNoteOn(notes[i], 127, 1);
+       }
+       // else send no messages
+    }
+    else if (keyStates[i] == KEY_ON) {
+        // finger removed?
+        if (readings[i] >= thresholds[i]) {
+           keyStates[i] = KEY_NEUTRAL;
+           MIDI.sendNoteOff(notes[i], 127, 1);
+        }
+        // else send no messages
     }
   }
   // force a delay to debounce
-  delay(10); 
+//  delay(10); 
 }
