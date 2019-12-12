@@ -1,3 +1,4 @@
+// imports
 #include <MIDI.h>
 #include <Encoder.h>
 #include <Adafruit_GFX.h>
@@ -5,14 +6,11 @@
 
 // photosensor stuff
 #define NUM_PINS 13
-//int pins[] = { 15, 13, 2, 0, 4, 14, 27, 26, 25, 33, 32, 35, 34 };
 int pins[] = {34, 35, 32, 33, 25, 26, 27, 14, 4, 0, 2, 13, 15};
 int readings[13] = { 0 };
 void sensorDebug();
 void sensorRead();
 void sensorSetup();
-//int lows[] =  {48,   169,  112,  860,  130,  130,  180};
-//int highs[] = {3530, 3760, 2600, 2400, 3500, 3700, 2800};
 int lows[13] =  { 0 };
 int highs[13] = { 0 };
 int thresholds[13] = { 0 };
@@ -29,6 +27,11 @@ int midi_c5[NUM_PINS] = { 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84 };
 int midi_c6[NUM_PINS] = { 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96 };
 int midi_c7[NUM_PINS] = { 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108 };
 bool beamStates[NUM_PINS] = { false, false, false, false, false, false, false, false, false, false, false, false, false };
+const int KEY_NEUTRAL = 0;
+const int KEY_OFF = 1;
+const int KEY_ON = 2;
+int keyStates[NUM_PINS] = { 0 };
+
 
 // display IO pins and thresholds
 const int displayD0 = 19;
@@ -58,6 +61,8 @@ const int DIAL_NEUTRAL = 0;
 const int DIAL_MAX = 100;
 const int DIAL_MIN = -100;
 
+// MAIN FUNCTIONS
+
 void setup() {
   MIDI.begin(MIDI_CHANNEL_OMNI);
   Serial.begin(115200);
@@ -72,6 +77,8 @@ void loop() {
 //  sensorDebug();
   sendMidi();
 }
+
+// HELPER FUNCTIONS
 
 void displaySetup() {
   disp.begin(SSD1306_SWITCHCAPVCC);
@@ -147,9 +154,6 @@ void dialRead() {
   } else if (dialPos < DIAL_MIN) {
     dial.write(DIAL_MIN);
   } 
-//  else {
-//    Serial.println(dialPos);
-//  }
 }
 
 void dialToOctave() {
@@ -158,7 +162,6 @@ void dialToOctave() {
     if (currentOctave == 1) {
       return;
     }
-//    Serial.println("Switching octaves...");
     switchOctave("C1");
     for (int i = 0; i < NUM_PINS; i++) {
       notes[i] = midi_c1[i];
@@ -168,7 +171,6 @@ void dialToOctave() {
     if (currentOctave == 2) {
       return;
     }
-//    Serial.println("Switching octaves...");
     switchOctave("C2");
     for (int i = 0; i < NUM_PINS; i++) {
       notes[i] = midi_c2[i];
@@ -178,7 +180,6 @@ void dialToOctave() {
     if (currentOctave == 3) {
       return;
     }
-//    Serial.println("Switching octaves...");
     switchOctave("C3");
     for (int i = 0; i < NUM_PINS; i++) {
       notes[i] = midi_c3[i];
@@ -188,7 +189,6 @@ void dialToOctave() {
     if (currentOctave == 4) {
       return;
     }
-//    Serial.println("Switching octaves...");
     switchOctave("C4");
     for (int i = 0; i < NUM_PINS; i++) {
       notes[i] = midi_c4[i];
@@ -198,7 +198,6 @@ void dialToOctave() {
     if (currentOctave == 5) {
       return;
     }
-//    Serial.println("Switching octaves...");
     switchOctave("C5");
     for (int i = 0; i < NUM_PINS; i++) {
       notes[i] = midi_c5[i];
@@ -208,7 +207,6 @@ void dialToOctave() {
     if (currentOctave == 6) {
       return;
     }
-//    Serial.println("Switching octaves...");
     switchOctave("C6");
     for (int i = 0; i < NUM_PINS; i++) {
       notes[i] = midi_c6[i];
@@ -218,7 +216,6 @@ void dialToOctave() {
     if (currentOctave == 7) {
       return;
     }
-//    Serial.println("Switching octaves...");
     switchOctave("C7");
     for (int i = 0; i < NUM_PINS; i++) {
       notes[i] = midi_c7[i];
