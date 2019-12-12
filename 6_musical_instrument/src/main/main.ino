@@ -69,8 +69,8 @@ void setup() {
 void loop() {
   dialToOctave();
   sensorRead();
+//  sensorDebug();
   sendMidi();
-  // sensorDebug();
 }
 
 void displaySetup() {
@@ -102,11 +102,11 @@ void sequenceCalibration() {
   }
 
   // get all the photosensor readings in LOW state
-  int value = -1;
-  for (int i = 0; i < NUM_PINS; i++) {
-    value = analogRead(pins[i]); 
-    lows[i] = value;
-  }
+//  int value = -1;
+//  for (int i = 0; i < NUM_PINS; i++) {
+//    value = analogRead(pins[i]); 
+//    lows[i] = value;
+//  }
   
   // have the user turn the lasers on
   for (int i = 10; i > 0; i--) {
@@ -116,6 +116,7 @@ void sequenceCalibration() {
   }
 
   // get all the photosensor readings in HIGH state
+  int value = -1;
   for (int i = 0; i < NUM_PINS; i++) {
     value = analogRead(pins[i]); 
     highs[i] = value;
@@ -124,7 +125,7 @@ void sequenceCalibration() {
   // do a calculation to determine thresholds for photosensors and update the array 
   for (int i = 0; i < NUM_PINS; i++) {
     value = analogRead(pins[i]); 
-    thresholds[i] = (highs[i] + lows[i]) / 2;
+    thresholds[i] = (highs[i] - 200);
   }
 
   // show completion notice
@@ -234,7 +235,7 @@ void switchOctave(String octaveStr) {
 }
 
 void sensorSetup() {
- for (int i = 0; i < NUM_PINS; i++) {
+  for (int i = 0; i < NUM_PINS; i++) {
     pinMode(pins[i], INPUT);
   }
 }
@@ -258,7 +259,7 @@ void sensorRead() {
 
 void sendMidi() {
   for (int i = 0; i < NUM_PINS; i++) {
-    if (readings[i] > thresholds[i]) {
+    if (readings[i] < thresholds[i]) {
       if (beamStates[i] != true) {
         MIDI.sendNoteOn(notes[i], 127, 1);
       }
