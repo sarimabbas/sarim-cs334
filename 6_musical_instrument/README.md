@@ -2,9 +2,14 @@
 
 > CPSC 334 - Creative Embedded Systems - Module 7 - Final Project
 
+## Introduction
+
+The laser piano can be played by moving one’s fingers through the air. It is motivated by the desire to break the tactile link between the musician and their instrument, and to create opportunities for learning and experimentation. The enclosure is made of laser cut pieces of acrylic to give transparency into the underlying electronics. Thirteen laser diodes shine beams onto corresponding photoresistors: these beams correspond to the keys in a traditional piano octave. Each laser beam can be “plucked” by a finger to play a note. The beams can optionally be visualized using mist. A dial allows one to switch octaves. At the heart of the system is an ESP32 module that relays sensor data,  using the MIDI protocol, to a laptop running any compatible DAW software e.g. Logic.
+
 ## Table of Contents
 
 - [Musical Instrument](#musical-instrument)
+  - [Introduction](#introduction)
   - [Table of Contents](#table-of-contents)
   - [Budget](#budget)
   - [Technical Challenges](#technical-challenges)
