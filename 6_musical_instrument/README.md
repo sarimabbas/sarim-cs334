@@ -19,6 +19,7 @@ The laser piano can be played by moving one’s fingers through the air. It is m
     - [ESP32 issues](#esp32-issues)
   - [Enclosure design](#enclosure-design)
     - [Use of display and rotary encoder](#use-of-display-and-rotary-encoder)
+  - [Possible safety concerns](#possible-safety-concerns)
 
 ## Budget
 
@@ -89,3 +90,9 @@ Both components are mounted on independent breadboards to make the instrument mo
 The rotary encoder saturates at very low or high values, which allows the user to easily cycle through the octaves.
 
 The encoder library used has an outdated version available in the Arduino Library manager, so I manually downloaded and included the master branch available at its GitHub page.
+
+
+## Possible safety concerns
+
+1. Lasers: since the laser beams are not intensely collimated, and the reflection from the resistors is diffuse, using the instrument should not pose significant risk to vision. Nevertheless, safety glasses were provided during viewings and viewers are advised not to look directly into the source of the beams. 
+2. Wiring: the exposed wiring runs at 5 volts (V) and is safe to touch.
