@@ -11,6 +11,7 @@ The laser piano can be played by moving one’s fingers through the air. It is m
 - [Musical Instrument](#musical-instrument)
   - [Introduction](#introduction)
   - [Table of contents](#table-of-contents)
+  - [Motivation](#motivation)
   - [Budget](#budget)
   - [Challenges and development](#challenges-and-development)
     - [Enclosure design](#enclosure-design)
@@ -21,6 +22,10 @@ The laser piano can be played by moving one’s fingers through the air. It is m
     - [Use of display and rotary encoder](#use-of-display-and-rotary-encoder)
   - [Possible safety concerns](#possible-safety-concerns)
   - [Schematic](#schematic)
+
+## Motivation
+
+Our class discussion on creativity influenced me to seek out new areas where I could find the right combination of originality, value, surprise and aesthetics that would be creatively significant. One area I had not explored was music. I was intimidated by it since I had no previous experience in music or musical instrument design. However, analogs with physics (e.g. the properties of sound; pitch, amplitude) and computer science (8-bit MIDI and its relation to frequency) helped make learning about music more manageable. Initially, I had wanted to make a black-box instrument that would use ultrasonic distance sensing of nearby people to modulate various properties (pitch, amplitude) of a fixed track. However, after trialling ultrasonic capabilities (see `src/tests`) and finding a lack of better alternatives, I decided on a more "traditional" instrument, in the sense that it would allow the same hypothetical flexibility as a piano or guitar would. However, I wanted to break the 1:1 tactile link which usually binds the musician to an instrument and create an "unseen effect", while maintaining the same flexibility. Hence, after some searching of the solution space, I decided to build a laser piano.
 
 ## Budget
 
