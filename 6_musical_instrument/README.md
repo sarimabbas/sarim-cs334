@@ -6,11 +6,11 @@
 
 The laser piano can be played by moving one’s fingers through the air. It is motivated by the desire to break the tactile link between the musician and their instrument, and to create opportunities for learning and experimentation. The enclosure is made of laser cut pieces of acrylic to give transparency into the underlying electronics. Thirteen laser diodes shine beams onto corresponding photoresistors: these beams correspond to the keys in a traditional piano octave. Each laser beam can be “plucked” by a finger to play a note. The beams can optionally be visualized using mist. A dial allows one to switch octaves. At the heart of the system is an ESP32 module that relays sensor data, using the MIDI protocol, to a laptop running any compatible DAW software e.g. Logic.
 
-## Table of Contents
+## Table of contents
 
 - [Musical Instrument](#musical-instrument)
   - [Introduction](#introduction)
-  - [Table of Contents](#table-of-contents)
+  - [Table of contents](#table-of-contents)
   - [Budget](#budget)
   - [Challenges and development](#challenges-and-development)
     - [Enclosure design](#enclosure-design)
@@ -58,7 +58,7 @@ Tools required:
 
 ### Calibration process
 
-When the device is first powered on, a tiny display informs the user to prepare for the calibration process.
+When the device is first powered on, the display informs the user to prepare for the calibration process.
 
 - 5 readings are taken at LOW and averaged.
 - Then, the user is instructed to turn on the lasers via a dedicated switch. This switch was not strictly required, as the ESP32 can easily turn on the lasers automatically. However, I decided to include this interaction as it gives the musician the feeling of "tuning" their instrument.
