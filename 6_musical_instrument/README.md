@@ -13,11 +13,11 @@ The laser piano can be played by moving one’s fingers through the air. It is m
   - [Table of Contents](#table-of-contents)
   - [Budget](#budget)
   - [Challenges and development](#challenges-and-development)
-    - [Photoresistors readings](#photoresistors-readings)
+    - [Enclosure design](#enclosure-design)
+    - [Photoresistor readings](#photoresistor-readings)
     - [Calibration process](#calibration-process)
     - [MIDI setup](#midi-setup)
     - [ESP32 issues](#esp32-issues)
-  - [Enclosure design](#enclosure-design)
     - [Use of display and rotary encoder](#use-of-display-and-rotary-encoder)
   - [Possible safety concerns](#possible-safety-concerns)
   - [Schematic](#schematic)
@@ -42,12 +42,19 @@ Tools required:
 
 ## Challenges and development
 
-### Photoresistors readings
+### Enclosure design
 
-- The 13 photoresistors were connected in parallel in separate potential divider circuits across a shared 5V source. However, since these resistors from the CEID were unlabelled with their peak resistances, the readings across them were inconsistent.
+- Initially I had wanted to make the instrument a black-box, which would add to the mystery of the workings of the instrument. But after accidentally laser cutting a piece of acrylic instead of wood, I thought it would be interesting to pivot and give the user/viewer insight into the bare metal.
+- To effectively showcase the inner workings and electronics, I gave lots of thought to the circuit layout, its symmetry and color coding of wiring.
+  - The photoresistors, for example, are soldered to common rails to minimize clutter.
+  - Many of the wires were painstakingly manuevered underneath the resistor plate with a pair of tweezers in order to give a neat appearance.
+  - Similarly, the wires connected to the laser diodes were folded among themselves to give a neat appearance.
+
+### Photoresistor readings
+
+- The 13 photoresistors are connected in parallel in separate potential divider circuits across a shared 5V source. However, since these resistors from the CEID were unlabelled with their peak resistances, the readings across them were inconsistent.
 - Typically, though, we can expect them to range from 0/150+ for complete darkness to 500+ for ambient to 1500+ for bright, directed light. These are the values output by the ESP32 ADCs, which have a low-high of 0-4095.
-
-To overcome inconsistencies, a calibration process on device startup individually set activation thresholds for each photoresistor. This calibration process is described below.
+  - To overcome inconsistencies, a calibration process on device startup individually set activation thresholds for each photoresistor. This calibration process is described below.
 
 ### Calibration process
 
@@ -62,41 +69,26 @@ When the device is first powered on, a tiny display informs the user to prepare 
 
 ![MIDI setup](./docs/midi_setup.png)
 
-Many options were tried:
-
-- ESP32 MIDI BLE => MIDI in to Logic on macOS
-- ESP32 Serial Out => Python Script on macOS => MIDI in to Logic on macOS
-- ESP32 MIDI over Serial Out => Hairless MIDI app on macOS => MIDI in to Logic on macOS
-
-The first option was not reliable as the Bluetooth connection between the ESP32 and macOS kept dropping.
-
-The second and third options are quite similar, but whereas I would have had to write the logic by myself in Python using a library like [Mido](https://mido.readthedocs.io/en/latest/), with Hairless MIDI this is already taken care of.
-
-Hairless MIDI is currently compiled for 32-bit, which posed a problem since I am using macOS Catalina. However, [this GitHub issue](https://github.com/projectgus/hairless-midiserial/issues/51) has an experimental 64-bit version. However, the Preferences must be re-saved in order for the program to work without crashing.
-
-The Hairless MIDI website [describes the required setup](https://projectgus.github.io/hairless-midiserial/), which involves enabling an IAC Driver Bus in the macOS MIDI settings.
+- Many options were tried:
+  - ESP32 MIDI BLE => MIDI in to Logic on macOS
+  - ESP32 Serial Out => Python Script on macOS => MIDI in to Logic on macOS
+  - ESP32 MIDI over Serial Out => Hairless MIDI app on macOS => MIDI in to Logic on macOS
+- The first option was not reliable as the Bluetooth connection between the ESP32 and macOS kept dropping.
+- The second and third options are quite similar, but whereas I would have had to write the logic by myself in Python using a library like [Mido](https://mido.readthedocs.io/en/latest/), with Hairless MIDI this is already taken care of.
+- Hairless MIDI is currently compiled for 32-bit, which posed a problem since I am using macOS Catalina. However, [this GitHub issue](https://github.com/projectgus/hairless-midiserial/issues/51) has an experimental 64-bit version. However, the Preferences must be re-saved in order for the program to work without crashing.
+- The Hairless MIDI website [describes the required setup](https://projectgus.github.io/hairless-midiserial/), which involves enabling an IAC Driver Bus in the macOS MIDI settings.
 
 ### ESP32 issues
 
 - Some pins (e.g. GPIO 13) are used for boot up, and setting them as INPUT interferes with the flashing process. The solution is not to use the pin or leave it unplugged during boot. [Relevant issue on Github](https://github.com/espressif/esp-idf/issues/113).
 
-## Enclosure design
-
-Initially I had wanted to make the instrument a black-box, which would add to the mystery of the workings of the instrument. But after accidentally laser cutting a piece of acrylic instead of wood, I thought it would be interesting to pivot and give the user/viewer insight into the bare metal.
-
-To effectively showcase the inner workings and electronics, I gave lots of thought to the circuit layout, its symmetry and color coding of wiring. The photoresistors, for example, are soldered to common rails to minimize clutter.
-
 ### Use of display and rotary encoder
 
-To add the octave switching functionality, I paired a rotary encoder to act as a dial, with a display providing feedback. The display also provides feedback during the startup calibration sequence.
-
-Surprisingly, the display does not require VCC and GND connections, and the data pin connections suffice.
-
-Both components are mounted on independent breadboards to make the instrument modular.
-
-The rotary encoder saturates at very low or high values, which allows the user to easily cycle through the octaves.
-
-The encoder library used has an outdated version available in the Arduino Library manager, so I manually downloaded and included the master branch available at its GitHub page.
+- To add the octave switching functionality, I paired a rotary encoder to act as a dial, with a display providing feedback.
+  - Surprisingly, the display does not require VCC and GND connections, and the data pin connections suffice.
+- Both components are mounted on independent breadboards to make the instrument modular.
+- The rotary encoder saturates at very low or high values, which allows the user to easily cycle through the octaves.
+  - The encoder library used has an outdated version available in the Arduino Library manager, so I manually downloaded and included the master branch available at its GitHub page.
 
 ## Possible safety concerns
 
