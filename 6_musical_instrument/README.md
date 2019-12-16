@@ -4,7 +4,7 @@
 
 ## Introduction
 
-The laser piano can be played by moving one’s fingers through the air. It is motivated by the desire to break the tactile link between the musician and their instrument, and to create opportunities for learning and experimentation. The enclosure is made of laser cut pieces of acrylic to give transparency into the underlying electronics. Thirteen laser diodes shine beams onto corresponding photoresistors: these beams correspond to the keys in a traditional piano octave. Each laser beam can be “plucked” by a finger to play a note. The beams can optionally be visualized using mist. A dial allows one to switch octaves. At the heart of the system is an ESP32 module that relays sensor data,  using the MIDI protocol, to a laptop running any compatible DAW software e.g. Logic.
+The laser piano can be played by moving one’s fingers through the air. It is motivated by the desire to break the tactile link between the musician and their instrument, and to create opportunities for learning and experimentation. The enclosure is made of laser cut pieces of acrylic to give transparency into the underlying electronics. Thirteen laser diodes shine beams onto corresponding photoresistors: these beams correspond to the keys in a traditional piano octave. Each laser beam can be “plucked” by a finger to play a note. The beams can optionally be visualized using mist. A dial allows one to switch octaves. At the heart of the system is an ESP32 module that relays sensor data, using the MIDI protocol, to a laptop running any compatible DAW software e.g. Logic.
 
 ## Table of Contents
 
@@ -12,9 +12,9 @@ The laser piano can be played by moving one’s fingers through the air. It is m
   - [Introduction](#introduction)
   - [Table of Contents](#table-of-contents)
   - [Budget](#budget)
-  - [Technical Challenges](#technical-challenges)
-    - [HC-SR04 readings](#hc-sr04-readings)
-    - [Photosensor readings](#photosensor-readings)
+  - [Challenges and development](#challenges-and-development)
+    - [Photoresistors readings](#photoresistors-readings)
+    - [Calibration process](#calibration-process)
     - [MIDI setup](#midi-setup)
     - [ESP32 issues](#esp32-issues)
   - [Enclosure design](#enclosure-design)
@@ -39,17 +39,23 @@ Tools required:
 - Wire cutter
 - Soldering iron
 
-## Technical Challenges
+## Challenges and development
 
-### HC-SR04 readings
+### Photoresistors readings
 
-Having used the sensor in a previous project, the readings can be quite volatile and noisy. For the instrument, much smoother transitions are required. One suggestion was to drive smoother _changes_ to a distance measure rather than updating absolute distance. Another was to take multiple readings, discard outliers and take the average.
+- The 13 photoresistors were connected in parallel in separate potential divider circuits across a shared 5V source. However, since these resistors from the CEID were unlabelled with their peak resistances, the readings across them were inconsistent. 
+- Typically, though, we can expect them to range from 0/150+ for complete darkness to 500+ for ambient to 1500+ for bright, directed light. These are the values output by the ESP32 ADCs, which have a low-high of 0-4095.
 
-Eventually, I found a library called NewPing that does a median computation automatically. Moreover, it can work with a single pin input from the sensor, which works well, since the instrument makes use of many such sensors.
+To overcome inconsistencies, a calibration process on device startup individually set activation thresholds for each photoresistor. This calibration process is described below.
 
-### Photosensor readings
+### Calibration process
 
-Analog: range from 150- for dark to 500 for ambient to 1500+ for bright, directed light.
+When the device is first powered on, a tiny display informs the user to prepare for the calibration process.
+
+- 5 readings are taken at LOW and averaged.
+- Then, the user is instructed to turn on the lasers via a dedicated switch. This switch was not strictly required, as the ESP32 can easily turn on the lasers automatically. However, I decided to include this interaction as it gives the musician the feeling of "tuning" their instrument.
+- Once the lasers are turned on, 5 readings are taken at HIGH and averaged.
+- The activation thresholds are set roughly in proportion to the x(HIGH + LOW) range for each resistor, where x is a magic number, set to around 0.6.
 
 ### MIDI setup
 
@@ -91,8 +97,12 @@ The rotary encoder saturates at very low or high values, which allows the user t
 
 The encoder library used has an outdated version available in the Arduino Library manager, so I manually downloaded and included the master branch available at its GitHub page.
 
-
 ## Possible safety concerns
 
-1. Lasers: since the laser beams are not intensely collimated, and the reflection from the resistors is diffuse, using the instrument should not pose significant risk to vision. Nevertheless, safety glasses were provided during viewings and viewers are advised not to look directly into the source of the beams. 
+1. Lasers: since the laser beams are not intensely collimated, and the reflection from the resistors is diffuse, using the instrument should not pose significant risk to vision. Nevertheless, safety glasses were provided during viewings and viewers are advised not to look directly into the source of the beams.
 2. Wiring: the exposed wiring runs at 5 volts (V) and is safe to touch.
+
+
+## Schematic
+
+![Schematic Breadboard](./docs/schematic_bb.png)
