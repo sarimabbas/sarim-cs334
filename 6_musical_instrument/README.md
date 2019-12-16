@@ -20,6 +20,7 @@ The laser piano can be played by moving one’s fingers through the air. It is m
   - [Enclosure design](#enclosure-design)
     - [Use of display and rotary encoder](#use-of-display-and-rotary-encoder)
   - [Possible safety concerns](#possible-safety-concerns)
+  - [Schematic](#schematic)
 
 ## Budget
 
@@ -43,7 +44,7 @@ Tools required:
 
 ### Photoresistors readings
 
-- The 13 photoresistors were connected in parallel in separate potential divider circuits across a shared 5V source. However, since these resistors from the CEID were unlabelled with their peak resistances, the readings across them were inconsistent. 
+- The 13 photoresistors were connected in parallel in separate potential divider circuits across a shared 5V source. However, since these resistors from the CEID were unlabelled with their peak resistances, the readings across them were inconsistent.
 - Typically, though, we can expect them to range from 0/150+ for complete darkness to 500+ for ambient to 1500+ for bright, directed light. These are the values output by the ESP32 ADCs, which have a low-high of 0-4095.
 
 To overcome inconsistencies, a calibration process on device startup individually set activation thresholds for each photoresistor. This calibration process is described below.
@@ -55,7 +56,7 @@ When the device is first powered on, a tiny display informs the user to prepare 
 - 5 readings are taken at LOW and averaged.
 - Then, the user is instructed to turn on the lasers via a dedicated switch. This switch was not strictly required, as the ESP32 can easily turn on the lasers automatically. However, I decided to include this interaction as it gives the musician the feeling of "tuning" their instrument.
 - Once the lasers are turned on, 5 readings are taken at HIGH and averaged.
-- The activation thresholds are set roughly in proportion to the x(HIGH + LOW) range for each resistor, where x is a magic number, set to around 0.6.
+- The activation thresholds are set roughly as `x(HIGH + LOW)` for each resistor, where `x` is a magic number, set to around `0.6`. This means that more sensitive resistors (which generally have smaller ranges) have smaller activation thresholds.
 
 ### MIDI setup
 
@@ -101,7 +102,6 @@ The encoder library used has an outdated version available in the Arduino Librar
 
 1. Lasers: since the laser beams are not intensely collimated, and the reflection from the resistors is diffuse, using the instrument should not pose significant risk to vision. Nevertheless, safety glasses were provided during viewings and viewers are advised not to look directly into the source of the beams.
 2. Wiring: the exposed wiring runs at 5 volts (V) and is safe to touch.
-
 
 ## Schematic
 
