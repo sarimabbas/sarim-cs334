@@ -11,6 +11,7 @@ The laser piano can be played by moving one’s fingers through the air. It is m
 - [Musical Instrument](#musical-instrument)
   - [Introduction](#introduction)
   - [Table of contents](#table-of-contents)
+  - [Video](#video)
   - [Motivation](#motivation)
   - [Budget](#budget)
   - [Challenges and development](#challenges-and-development)
@@ -22,6 +23,10 @@ The laser piano can be played by moving one’s fingers through the air. It is m
     - [Use of display and rotary encoder](#use-of-display-and-rotary-encoder)
   - [Possible safety concerns](#possible-safety-concerns)
   - [Schematic](#schematic)
+
+## Video
+
+Can be seen here: <https://www.youtube.com/watch?v=T0WQOCh6yS0>
 
 ## Motivation
 
