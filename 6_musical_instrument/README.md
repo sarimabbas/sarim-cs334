@@ -1,6 +1,6 @@
 # Laser Piano
 
-> CPSC 334 - Creative Embedded Systems - Module 7 - Final Project
+> CPSC 334 - Creative Embedded Systems - Module 6 - Final Project
 
 YouTube video: <https://www.youtube.com/embed/T0WQOCh6yS0>
 

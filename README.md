@@ -5,6 +5,7 @@
 - [CPSC 334 - Creative Embedded Systems](#cpsc-334---creative-embedded-systems)
   - [Table of Contents](#table-of-contents)
   - [Modules](#modules)
+    - [Module 6: Musical Instrument](#module-6-musical-instrument)
     - [Module 5: Distributed Network](#module-5-distributed-network)
     - [Module 4: Kinetic Sculpture](#module-4-kinetic-sculpture)
     - [Module 3: Going Wireless](#module-3-going-wireless)
@@ -14,6 +15,10 @@
 ## Modules
 
 > Descending order
+
+### Module 6: [Musical Instrument](./6_musical_instrument/)
+
+<img src="./6_musical_instrument/docs/dev_station.png" alt="Musical Instrument"/>
 
 ### Module 5: [Distributed Network](./5_distributed_network/)
 
