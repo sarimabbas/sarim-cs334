@@ -1,6 +1,8 @@
-# Musical Instrument
+# Laser Piano
 
 > CPSC 334 - Creative Embedded Systems - Module 7 - Final Project
+
+YouTube video: <https://www.youtube.com/embed/T0WQOCh6yS0>
 
 ## Introduction
 
@@ -8,10 +10,9 @@ The laser piano can be played by moving one’s fingers through the air. It is m
 
 ## Table of contents
 
-- [Musical Instrument](#musical-instrument)
+- [Laser Piano](#laser-piano)
   - [Introduction](#introduction)
   - [Table of contents](#table-of-contents)
-  - [Video](#video)
   - [Motivation](#motivation)
   - [Budget](#budget)
   - [Challenges and development](#challenges-and-development)
@@ -23,10 +24,6 @@ The laser piano can be played by moving one’s fingers through the air. It is m
     - [Use of display and rotary encoder](#use-of-display-and-rotary-encoder)
   - [Possible safety concerns](#possible-safety-concerns)
   - [Schematic](#schematic)
-
-## Video
-
-Can be seen here: <https://www.youtube.com/watch?v=T0WQOCh6yS0>
 
 ## Motivation
 
@@ -54,6 +51,8 @@ Tools required:
 
 ### Enclosure design
 
+![Dev Station](./docs/dev_station.png)
+
 - Initially I had wanted to make the instrument a black-box, which would add to the mystery of the workings of the instrument. But after accidentally laser cutting a piece of acrylic instead of wood, I thought it would be interesting to pivot and give the user/viewer insight into the bare metal.
 - To effectively showcase the inner workings and electronics, I gave lots of thought to the circuit layout, its symmetry and color coding of wiring.
   - The photoresistors, for example, are soldered to common rails to minimize clutter.
@@ -62,11 +61,15 @@ Tools required:
 
 ### Photoresistor readings
 
+![Photoresistors](./docs/photoresistors.png)
+
 - The 13 photoresistors are connected in parallel in separate potential divider circuits across a shared 5V source. However, since these resistors from the CEID were unlabelled with their peak resistances, the readings across them were inconsistent.
 - Typically, though, we can expect them to range from 0/150+ for complete darkness to 500+ for ambient to 1500+ for bright, directed light. These are the values output by the ESP32 ADCs, which have a low-high of 0-4095.
   - To overcome inconsistencies, a calibration process on device startup individually set activation thresholds for each photoresistor. This calibration process is described below.
 
 ### Calibration process
+
+YouTube video: <https://www.youtube.com/embed/qF3r_-Wi_mg>
 
 When the device is first powered on, the display informs the user to prepare for the calibration process.
 
@@ -93,6 +96,8 @@ When the device is first powered on, the display informs the user to prepare for
 - Some pins (e.g. GPIO 13) are used for boot up, and setting them as INPUT interferes with the flashing process. The solution is not to use the pin or leave it unplugged during boot. [Relevant issue on Github](https://github.com/espressif/esp-idf/issues/113).
 
 ### Use of display and rotary encoder
+
+YouTube video: <https://www.youtube.com/embed/hD_vjbFaM68>
 
 - To add the octave switching functionality, I paired a rotary encoder to act as a dial, with a display providing feedback.
   - Surprisingly, the display does not require VCC and GND connections, and the data pin connections suffice.
